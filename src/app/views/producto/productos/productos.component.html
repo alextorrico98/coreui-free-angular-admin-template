@@ -1,0 +1,107 @@
+<c-row ngPreserveWhitespaces>
+    <c-col xs="12">
+        <c-card class="mb-4">
+            <c-card-header>
+              <strong>Formulario de registro de productos</strong>
+            </c-card-header>
+            <c-card-body>
+                <form cForm>
+                  <div class="mb-3">
+                    <label cLabel for="nombre">Nombre</label>
+                    <input cFormControl
+                           id="nombre"
+                           placeholder="Ingrese el nombre del producto"
+                           type="text"
+                           name="nombre"
+                           [(ngModel)]="productoModelo.nombre"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label cLabel for="marca">Marca</label>
+                    <input cFormControl
+                           id="marca"
+                           placeholder="Ingrese la marca del producto"
+                           type="text"
+                           name="marca"
+                           [(ngModel)]="productoModelo.marca"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label cLabel for="descripcion">Descripcion</label>
+                    <input cFormControl
+                           id="descripcion"
+                           placeholder="Ingrese la descripcion del producto"
+                           type="text"
+                           name="descripcion"
+                           [(ngModel)]="productoModelo.descripcion"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label cLabel for="cantidad">Cantidad</label>
+                    <input cFormControl
+                           id="cantidad"
+                           placeholder="Ingrese la cantidad de producto"
+                           type="number"
+                           name="cantidad"
+                           [(ngModel)]="productoModelo.cantidad"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label cLabel for="precio">Precio</label>
+                    <input cFormControl
+                           id="precio"
+                           placeholder="Ingrese el precio del producto"
+                           type="number"
+                           name="precio"
+                           [(ngModel)]="productoModelo.precio"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <input cFormControl
+                           id="categoria"
+                           placeholder="Ingrese la categoria del producto"
+                           type="text"
+                           name="categoria"
+                           [(ngModel)]="productoModelo.idcategoria"
+                    />
+                  </div>
+          
+                    <button (click)="guardarProducto()" cButton color="primary">Primary</button>
+                 
+                </form>
+            </c-card-body>
+          </c-card>
+    </c-col>
+    <c-col xs="12">
+        <table cTable hover>
+            <thead>
+            <tr>
+              <th scope="col">N°</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Marca</th>
+              <th scope="col">Descripcccion</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+              @for(prod of listaProductos; track prod;){
+                <tr>
+                  <th scope="row">1</th>
+                  <td>{{prod.nombre}}</td>
+                  <td>{{prod.marca}}</td>
+                  <td>{{prod.descripcion}}</td>
+                  <td>{{prod.cantidad}}</td>
+                  <td>{{prod.precio}}</td>
+                  <td>{{prod.idcategoria}}</td>
+                  <td><button (click)="verProducto(prod)" cButton color="warning" variant="ghost">Editar</button>
+                    <button (click)="eliminarProducto(prod)" cButton color="danger" variant="ghost">Eliminar</button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+    </c-col>
+</c-row>
